@@ -1,27 +1,62 @@
 #include <plib.h>
 
+int fled(int x)
+{ 
+     PORTE = 1 << x
+}
+     
+
 int main()
 {
-  int n=0;
-  int a=0,b=0;
+  int n = 0;
+  int flag1=0,flag2=0;
   TRISE = 0;
   TRISD = 1 << 5;
 
   while(1)
    {
-    b = a;
+    flag1 = flag2;
     if(PORTD & (1<<5))
      {
       a = 1;
-      if (n == 0) { PORTE = 1 << 7; }
-      if (n == 1) { PORTE = 1 << 7; PORTE = 1 << 6; }
-      if (n == 2) { PORTE = 1 << 7; PORTE = 1 << 6; PORTE = 1 << 5; }
-      if (n == 3) { PORTE = 1 << 7; PORTE = 1 << 6; PORTE = 1 << 5; PORTE = 1 << 4; }
-      if (n == 4) { PORTE = 1 << 7; PORTE = 1 << 6; PORTE = 1 << 5; PORTE = 1 << 4; PORTE = 1 << 3; }
-      if (n == 5) { PORTE = 1 << 7; PORTE = 1 << 6; PORTE = 1 << 5; PORTE = 1 << 4; PORTE = 1 << 3; PORTE = 1 << 2; n = -1; }
-     }
-    else 
-      a = 0;
-    if ((b == 1) && (a == 0)) 
+      switch (n) {
+      case 0:
+          fled(7);
+          break;
+      case 1:
+          fled(7);
+          fled(6);
+          break;
+      case 2:
+          fled(7);
+          fled(6);
+          fled(5);
+          break;
+      case 3:
+          fled(7);
+          fled(6);
+          fled(5);
+          fled(4);
+          break;
+      case 4:
+          fled(7);
+          fled(6);
+          fled(5);
+          fled(4);
+          fled(3);
+          break;
+      case 5:
+          fled(7);
+          fled(6);
+          fled(5);
+          fled(4);
+          fled(3);
+          fled(2);
+          n = -1;
+          break;
+      default:
+          flag2 = 0;
+      }
+    if ((flag1 == 1) && (flag2 == 0)) 
       n = n + 1;
    }
