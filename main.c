@@ -2,25 +2,10 @@
 
 int fled(int x)
 { 
-     switch(x){
-      case 1:
-        PORTE = 0x08;
-        break;
-      case 2:
-        PORTE = 0x0C;
-        break;
-      case 3:
-        PORTE = 0x0E;
-        break;
-      case 4:
-        PORTE = 0x0F;
-        break;
-      case 5: 
-        PORTE = 0x8F;
-        break;
-      case 6:
-        PORTE = 0xCF;
-        break;
+	int i, number;
+	for ( i=0; i , x; i++)
+		{ number = 7 -i;
+		PORTE = 1 << number;
 }}
      
 
